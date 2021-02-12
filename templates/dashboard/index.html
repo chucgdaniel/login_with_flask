@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<main class="dashboard">
+    <div class="row flex-row-reverse close_session pt-2 pb-2 d-flex align-items-center">
+        <div class="col-md-8">
+            <a href="/logout">Cerrar sesión</a>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group" style="margin-bottom: 0;">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='date' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Ultima conexión</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if logs %}
+              {% for l in logs -%}
+              <tr>
+                <th scope="row">{{l[1]}}</th>
+                <td>{{l[2]}}</td>
+                <td class="format">{{l[3]}}</td>
+              </tr>
+              {% endfor -%}
+            {% else %}
+              <tr class="text-center">
+                <td colspan="3">No se han encontrado registros</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+{% endblock %}

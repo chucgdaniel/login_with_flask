@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<main class="row">
+    <section class="col-md-6" id="panel-left">
+        <div class="container align-self-center">
+            <div class="row">
+                <p class="col-12 text-center description">
+                    Bienvenido, nos da gusto tenerte <br/> de nuevo aquí
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="col-md-6" id="panel-right">
+        <div class="container">
+            <div class="row mb-5">
+                <h2 class="col-12 text-center">Iniciar sesión</h2>
+            </div>
+            <div class="row">
+                <form action="/login" method='post' class="col-12 col-md-8 offset-md-2" id="form_login">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div>
+                      <p id="message">-</p>
+                    </div>
+                    <div class="form-group text-center pt-2">
+                        <input type="submit" class="btn btn-primary" value="Ingresar">
+                    </div>
+                </form>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 links text-center">
+                    <div>
+                        <a href="/forgot">Olvide mi contraseña</a>
+                    </div>
+                    <div>
+                        <a href="/register">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}
